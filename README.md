@@ -13,7 +13,7 @@ A simple React-based image gallery app.
 1. **Clone or Download**: Clone this repository to your machine or download it as a ZIP file.
 To clone the repository:
  ```bash
- git clone https://github.com/your-username/image-gallery-app.git
+ git clone https://github.com/Bolupe/Image-Gallery.git
  ```
 
 2. **Navigate to the project directory**:
