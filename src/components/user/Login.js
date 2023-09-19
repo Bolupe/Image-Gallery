@@ -18,7 +18,7 @@ const Login = () => {
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
-  const [isRegister, setIsRegister] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
   const {
     modal,
     setModal,
@@ -34,7 +34,7 @@ const Login = () => {
     setLoading(true);
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    if (isRegister) {
+    if (isSignUp) {
       const confirmPassword = confirmPasswordRef.current.value;
       try {
         if (password !== confirmPassword) {
@@ -87,12 +87,12 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (isRegister) {
-      setModal({ ...modal, title: 'Register' });
+    if (isSignUp) {
+      setModal({ ...modal, title: 'SignUp' });
     } else {
       setModal({ ...modal, title: 'Login' });
     }
-  }, [isRegister]);
+  }, [isSignUp]);
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -102,7 +102,7 @@ const Login = () => {
           </DialogContentText>
           <EmailField {...{ emailRef }} />
           <PasswordField {...{ passwordRef, autoFocus: false }} />
-          {isRegister && (
+          {isSignUp && (
             <PasswordField
               {...{
                 passwordRef: confirmPasswordRef,
@@ -130,11 +130,11 @@ const Login = () => {
         </DialogActions>
       </form>
       <DialogActions sx={{ justifyContent: 'left', p: '5px 24px' }}>
-        {isRegister
+        {isSignUp
           ? 'Do you have an account? Sign in now'
           : "Don't you have an account? Create one now"}
-        <Button onClick={() => setIsRegister(!isRegister)}>
-          {isRegister ? 'Login' : 'Register'}
+        <Button onClick={() => setIsSignUp(!isSignUp)}>
+          {isSignUp ? 'Login' : 'SignUp'}
         </Button>
       </DialogActions>
       <DialogActions sx={{ justifyContent: 'center', py: '24px' }}>
