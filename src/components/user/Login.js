@@ -5,7 +5,8 @@ import {
   DialogContent,
   DialogContentText,
 } from '@mui/material';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
+import { useRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import EmailField from './inputs/EmailField';
 import PasswordField from './inputs/PasswordField';
@@ -16,8 +17,8 @@ const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
-  const [isRegister, setIsRegister] = useState(false);
 
+  const [isRegister, setIsRegister] = useState(false);
   const {
     modal,
     setModal,
@@ -33,7 +34,6 @@ const Login = () => {
     setLoading(true);
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-
     if (isRegister) {
       const confirmPassword = confirmPasswordRef.current.value;
       try {
@@ -92,8 +92,7 @@ const Login = () => {
     } else {
       setModal({ ...modal, title: 'Login' });
     }
-  }, [isRegister, modal, setModal]);
-
+  }, [isRegister]);
   return (
     <>
       <form onSubmit={handleSubmit}>

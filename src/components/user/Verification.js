@@ -5,30 +5,24 @@ import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 
 const Verification = () => {
-  // Access user-related data and functions from context
   const { currentUser, setAlert, setLoading } = useAuth();
-
-  // State to manage the initial open state and button click status
   const [open, setOpen] = useState(true);
   const [isClicked, setIsClicked] = useState(false);
 
-  // Function to trigger email verification
   const verify = async () => {
     setIsClicked(true);
     setLoading(true);
 
     try {
-      // Send email verification request to Firebase
       await sendEmailVerification(currentUser);
       setAlert({
         isAlert: true,
         severity: 'info',
-        message: 'Verification link has been sent to your email inbox',
+        message: 'verification link has been sent to your email inbox',
         timeout: 8000,
         location: 'main',
       });
     } catch (error) {
-      // Handle errors and display an error message
       setAlert({
         isAlert: true,
         severity: 'error',
@@ -41,13 +35,10 @@ const Verification = () => {
 
     setLoading(false);
   };
-
   return (
-    // Display verification alert only if the email is not verified
     currentUser?.emailVerified === false && (
       <Box>
         <Collapse in={open}>
-          {/* Alert component for email verification */}
           <Alert
             severity="warning"
             action={
@@ -68,7 +59,7 @@ const Verification = () => {
               disabled={isClicked}
               sx={{ lineHeight: 'initial' }}
             >
-              Verify Now
+              verify Now
             </Button>
           </Alert>
         </Collapse>

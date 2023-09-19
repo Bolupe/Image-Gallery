@@ -6,21 +6,17 @@ import PasswordField from '../inputs/PasswordField';
 import SubmitButton from '../inputs/SubmitButton';
 
 const ChangePassword = () => {
-  // Accessing context and utility functions from useAuth
   const { currentUser, setLoading, setAlert, setModal, modal } = useAuth();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
-  // Function to handle form submission when changing the password
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      // Check if the entered passwords match
       if (passwordRef.current.value !== confirmPasswordRef.current.value) {
         throw new Error('Passwords do not match');
       }
-      // Update the password associated with the user's account
       await updatePassword(currentUser, passwordRef.current.value);
       setModal({ ...modal, isOpen: false });
       setAlert({
@@ -31,7 +27,6 @@ const ChangePassword = () => {
         location: 'main',
       });
     } catch (error) {
-      // Handle and display errors that occur during the password update process
       setAlert({
         isAlert: true,
         severity: 'error',

@@ -9,28 +9,19 @@ import ChangePassword from './ChangePassword';
 import DeleteAccount from './DeleteAccount';
 
 const ReAuth = ({ action }) => {
-  // Accessing context and utility functions from useAuth
   const { currentUser, setLoading, setAlert, setModal, modal } = useAuth();
-  
-  // Ref for the password input
   const passwordRef = useRef();
 
-  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    
-    // Creating a credential using the current user's email and the entered password
     const credential = EmailAuthProvider.credential(
       currentUser?.email,
       passwordRef.current.value
     );
-    
     try {
-      // Reauthenticating the user with the provided credential
       await reauthenticateWithCredential(currentUser, credential);
 
-      // Determining the action to take based on the 'action' prop
       switch (action) {
         case 'changePassword':
           setModal({
@@ -57,7 +48,6 @@ const ReAuth = ({ action }) => {
           throw new Error('No matching action');
       }
     } catch (error) {
-      // Handling and displaying any errors that occur during reauthentication
       setAlert({
         isAlert: true,
         severity: 'error',

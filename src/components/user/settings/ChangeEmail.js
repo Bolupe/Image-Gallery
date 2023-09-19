@@ -6,16 +6,13 @@ import EmailField from '../inputs/EmailField';
 import SubmitButton from '../inputs/SubmitButton';
 
 const ChangeEmail = () => {
-  // Accessing context and utility functions from useAuth
   const { currentUser, setLoading, setAlert, setModal, modal } = useAuth();
   const emailRef = useRef();
 
-  // Function to handle form submission when changing the email
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      // Update the email associated with the user's account
       await updateEmail(currentUser, emailRef.current.value);
       setModal({ ...modal, isOpen: false });
       setAlert({
@@ -26,7 +23,6 @@ const ChangeEmail = () => {
         location: 'main',
       });
     } catch (error) {
-      // Handle and display errors that occur during the email update process
       setAlert({
         isAlert: true,
         severity: 'error',

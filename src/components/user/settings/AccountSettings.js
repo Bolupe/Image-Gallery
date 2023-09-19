@@ -17,7 +17,6 @@ const AccountSettings = () => {
 
   const handleAction = async (action) => {
     if (isPasswordProvider) {
-      // If the user is authenticated via email/password, ask for re-authentication
       setModal({
         ...modal,
         title: 'Re-Login',
@@ -25,10 +24,7 @@ const AccountSettings = () => {
       });
     } else {
       try {
-        // If the user is authenticated via Google, re-authenticate with Google
         await reauthenticateWithPopup(currentUser, new GoogleAuthProvider());
-
-        // Handle different actions
         switch (action) {
           case 'changeEmail':
             setModal({
@@ -48,7 +44,6 @@ const AccountSettings = () => {
             throw new Error('No matching action');
         }
       } catch (error) {
-        // Handle and display errors
         setAlert({
           isAlert: true,
           severity: 'error',
@@ -60,12 +55,12 @@ const AccountSettings = () => {
       }
     }
   };
-
   return (
     <>
       <DialogContent dividers>
         <DialogContentText>
-          For security reasons, you need to provide your credentials to perform any of these actions:
+          For security reason, you need to provide your credentials to do any of
+          these actions:
         </DialogContentText>
       </DialogContent>
       <DialogActions sx={{ flexDirection: 'column', gap: 2, my: 2 }}>
