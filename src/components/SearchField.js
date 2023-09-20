@@ -24,21 +24,27 @@ const SearchField = () => {
   }
 
   return (
-    <div className="flex">
-      <input
-        className="bg-gray-50 border border-gray-300 text-sm w-full indent-2 p-2.5 outline-none focus:border-blue-500 focus:ring-2 rounded-tl rounded-bl"
-        type="search"
-        placeholder="Search Anything..."
-        value={searchValue}
-        onChange={handleInputChange}
-        onKeyDown={handleEnterSearch}
-        />
-      <button
-        onClick={handleButtonSearch}
-        disabled={!searchValue}
-        className="bg-blue-600 px-6 py-2.5 text-white rounded-tr rounded-br focus:ring-2 focus:ring-blue-300 disabled:bg-gray-400"
-      >Search</button>
-    </div>
+<div className="flex flex-col sm:flex-row items-center"> {/* Center items on smaller screens */}
+  <input
+    className="bg-gray-50 border border-gray-300 text-sm w-full sm:w-1/2 md:w-2/3 lg:w-3/4 p-2.5 sm:mx-2 outline-none focus:border-blue-500 focus:ring-2 rounded-tl rounded-bl sm:rounded-tl-none sm:rounded-bl"
+    type="search"
+    placeholder="Search Anything..."
+    value={searchValue}
+    onChange={handleInputChange}
+    onKeyDown={handleEnterSearch}
+  />
+  <button
+    onClick={handleButtonSearch}
+    disabled={!searchValue}
+    className="bg-blue-600 px-4 py-2.5 text-white mt-2 sm:mt-0 sm:ml-2 max-w-[6rem] sm:max-w-none w-full sm:w-auto md:w-[8rem] lg:w-[9rem] rounded-bl rounded-tr sm:rounded-tr-none focus:ring-2 focus:ring-blue-300 disabled:bg-gray-400"
+  >
+    Search
+  </button>
+</div>
+
+
+
+
   )
 }
 

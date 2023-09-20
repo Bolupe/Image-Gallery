@@ -108,6 +108,7 @@ const Profile = () => {
           autoFocus
           margin="normal"
           type="text"
+          placeholder="Your Name"
           inputProps={{ minLength: 2 }}
           fullWidth
           variant="standard"

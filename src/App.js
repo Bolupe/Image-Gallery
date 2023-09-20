@@ -6,7 +6,7 @@ import MainNotification from './components/MainNotification';
 import Loading from './components/Loading';
 import Verification from './components/user/Verification';
 import Images from "./components/Images";
-import Jumbutron from "./components/Jumbutron";
+import Header from "./components/Header";
 import SearchField from "./components/SearchField";
 import useAxios from "./hooks/useAxios";
 import React, { createContext, useState } from 'react';
@@ -52,11 +52,11 @@ function App() {
 
         {/* ImageContext.Provider to provide context to child components */}
         <ImageContext.Provider value={value}>
-          {/* Jumbutron component */}
-          <Jumbutron>
+          {/* Header component */}
+          <Header>
             {/* SearchField component */}
             <SearchField />
-          </Jumbutron>
+          </Header>
           
           {/* Images component */}
           <Images />
