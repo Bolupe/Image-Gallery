@@ -15,6 +15,7 @@ import { useAuth } from '../context/AuthContext';
 import Login from './user/Login';
 import Profile from './user/Profile';
 import AccountSettings from './user/settings/AccountSettings';
+import LoginNotification from './LoginNotification'; // Import the LoginNotification component
 
 export default function Nav() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -151,6 +152,9 @@ export default function Nav() {
           Logout
         </MenuItem>
       </Menu>
+
+      {/* Display the LoginNotification for users who aren't logged in */}
+      {!currentUser && <LoginNotification />}
     </React.Fragment>
   );
 }
