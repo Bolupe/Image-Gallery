@@ -1,6 +1,6 @@
 # Image Gallery App
 
-A simple React-based image gallery app.
+A Drag-and-Drop Image Gallery using React.
 
 ## Prerequisites
 
@@ -43,5 +43,5 @@ Start the development server using the command:
  
 Access the app at http://localhost:3000.
 
-With these instructions, you'll have the Image Gallery Web App up and running locally with your own API keys.
+With these instructions, you'll have the Drag-and-Drop Image Gallery Web App up and running locally with your own API keys.
 
