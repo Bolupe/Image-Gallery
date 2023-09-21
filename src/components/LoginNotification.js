@@ -27,7 +27,7 @@ const LoginNotification = () => {
           }
           onClose={closeNotification} 
         >
-          Please log in to view images clearly.
+          Kindly Log In to view images clearly.
         </Alert>
       </Collapse>
     </Box>
