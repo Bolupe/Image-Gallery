@@ -24,7 +24,7 @@ const SearchField = () => {
   }
 
   return (
-<div className="flex flex-col sm:flex-row items-center"> {/* Center items on smaller screens */}
+<div className="flex flex-col sm:flex-row items-center"> 
   <input
     className="bg-gray-50 border border-gray-300 text-sm w-full sm:w-1/2 md:w-2/3 lg:w-3/4 p-2.5 sm:mx-2 outline-none focus:border-blue-500 focus:ring-2 rounded-tl rounded-bl sm:rounded-tl-none sm:rounded-bl"
     type="search"
@@ -41,9 +41,6 @@ const SearchField = () => {
     Search
   </button>
 </div>
-
-
-
 
   )
 }

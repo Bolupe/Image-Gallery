@@ -10,7 +10,7 @@ import Header from "./components/Header";
 import SearchField from "./components/SearchField";
 import useAxios from "./hooks/useAxios";
 import React, { createContext, useState } from 'react';
-import './index.css'; // Import your custom CSS or index.css here
+import './index.css'; 
 
 
 // Create Context for image-related data
@@ -37,30 +37,22 @@ function App() {
     // Container for the entire application
     <Container maxWidth="lg" sx={{ textAlign: 'center', mt: '3rem' }}>
       <AuthContext>
-        {/* Loading component */}
         <Loading />
-        
-        {/* Modal component */}
+
         <Modal />
 
-        {/* Verification component */}
         <Verification />
-        
-        {/* MainNotification component */}
+    
         <MainNotification />
-        
-        {/* Navigation component */}
+  
         <Nav />
-
-        {/* ImageContext.Provider to provide context to child components */}
+        
         <ImageContext.Provider value={value}>
-          {/* Header component */}
+       
           <Header>
-            {/* SearchField component */}
             <SearchField />
           </Header>
-          
-          {/* Images component */}
+    
           <Images />
         </ImageContext.Provider>
       </AuthContext>

@@ -3,7 +3,7 @@ export const createImage = (url) =>
     const image = new Image();
     image.addEventListener('load', () => resolve(image));
     image.addEventListener('error', (error) => reject(error));
-    image.setAttribute('crossOrigin', 'anonymous'); // needed to avoid cross-origin issues on CodeSandbox
+    image.setAttribute('crossOrigin', 'anonymous'); 
     image.src = url;
   });
 
@@ -11,9 +11,6 @@ export function getRadianAngle(degreeValue) {
   return (degreeValue * Math.PI) / 180;
 }
 
-/**
- * Returns the new bounding area of a rotated rectangle.
- */
 export function rotateSize(width, height, rotation) {
   const rotRad = getRadianAngle(rotation);
 
@@ -25,9 +22,7 @@ export function rotateSize(width, height, rotation) {
   };
 }
 
-/**
- * This function was adapted from the one in the ReadMe of https://github.com/DominicTobias/react-image-crop
- */
+
 export default async function getCroppedImg(
   imageSrc,
   pixelCrop,
