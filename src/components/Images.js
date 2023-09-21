@@ -1,16 +1,21 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { ImageContext } from '../App';
 import Image from './Image';
 import { useAuth } from '../context/AuthContext';
 import Sortable from 'sortablejs';
+import Skeleton from './Skeleton'; // Import your Skeleton component
 
 const Images = () => {
   const { response, isLoading, searchImage } = useContext(ImageContext);
   const { currentUser } = useAuth();
 
+  const [showSkeleton, setShowSkeleton] = useState(isLoading);
+
   const imageContainerRefs = useRef([]);
 
   useEffect(() => {
+    setShowSkeleton(isLoading); // Show the skeleton loader while loading
+
     const sortableContainer = new Sortable(document.getElementById('image-container'), {
       animation: 150,
       onEnd: handleDragEnd,
@@ -19,7 +24,14 @@ const Images = () => {
     return () => {
       sortableContainer.destroy();
     };
-  }, []);
+  }, [isLoading]); // Update when isLoading changes
+
+  useEffect(() => {
+    // Hide the skeleton loader once the images are loaded
+    if (!isLoading) {
+      setShowSkeleton(false);
+    }
+  }, [isLoading]);
 
   const handleDragEnd = (event) => {
     const { oldIndex, newIndex } = event;
@@ -47,7 +59,11 @@ const Images = () => {
           key={data.id}
           ref={(el) => (imageContainerRefs.current[index] = el)}
         >
-          <Image data={data} currentUser={currentUser} />
+          {showSkeleton ? (
+            <Skeleton item={1} />
+          ) : (
+            <Image data={data} currentUser={currentUser} />
+          )}
         </div>
       ))}
     </div>

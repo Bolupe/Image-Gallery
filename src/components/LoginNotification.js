@@ -11,7 +11,7 @@ const LoginNotification = () => {
         <Alert
           severity="info"
         >
-          Kindly Log In to view images clearly.
+          Kindly Log In to view images clearly and use the the drag and drop feature.
         </Alert>
       </Collapse>
     </Box>
