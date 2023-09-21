@@ -10,6 +10,8 @@ import Header from "./components/Header";
 import SearchField from "./components/SearchField";
 import useAxios from "./hooks/useAxios";
 import React, { createContext, useState } from 'react';
+import './index.css'; // Import your custom CSS or index.css here
+
 
 // Create Context for image-related data
 export const ImageContext = createContext();

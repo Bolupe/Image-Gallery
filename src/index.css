@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* In your index.css or custom CSS file */
+.blur-image {
+    filter: blur(5px); /* Adjust the blur level as needed */
+  }  

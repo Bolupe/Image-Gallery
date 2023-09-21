@@ -1,19 +1,21 @@
-import { useContext } from "react";
-import { ImageContext } from "../App";
-import Image from "./Image";
-import Skeleton from "./Skeleton";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import React, { useContext } from 'react';
+import { ImageContext } from '../App';
+import { Draggable, Droppable, DragDropContext} from 'react-beautiful-dnd';
+import Image from './Image';
+import { useAuth } from '../context/AuthContext';
 
 const Images = () => {
   const { response, isLoading, searchImage, handleDragEnd } = useContext(
     ImageContext
   );
 
+  const { currentUser } = useAuth(); // Access the currentUser from AuthContext
+
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
       <div>
         <h1 className="text-center mt-6 underline text-2xl">
-          Results for {searchImage || "Wallpapers"}
+          Results for {searchImage || 'Wallpapers'}
         </h1>
         <Droppable droppableId="image-list" direction="horizontal">
           {(provided) => (
@@ -24,36 +26,28 @@ const Images = () => {
             >
               {isLoading ? (
                 response.map((data, index) => (
-                  <Draggable
-                    key={data.id}
-                    draggableId={data.id}
-                    index={index}
-                  >
+                  <Draggable key={data.id} draggableId={data.id} index={index}>
                     {(provided) => (
                       <div
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
-                        <Image data={data} />
+                        <Image data={data} currentUser={currentUser} /> {/* Pass currentUser to the Image component */}
                       </div>
                     )}
                   </Draggable>
                 ))
               ) : (
                 response.map((data, index) => (
-                  <Draggable
-                    key={data.id}
-                    draggableId={data.id}
-                    index={index}
-                  >
+                  <Draggable key={data.id} draggableId={data.id} index={index}>
                     {(provided) => (
                       <div
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
-                        <Image data={data} />
+                        <Image data={data} currentUser={currentUser} /> {/* Pass currentUser to the Image component */}
                       </div>
                     )}
                   </Draggable>
